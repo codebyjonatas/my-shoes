@@ -1,0 +1,15 @@
+tenis:
+  name: Tênis
+  position: 1
+
+casual:
+  name: Casual
+  position: 2
+
+esportivo:
+  name: Esportivo
+  position: 3
+
+social:
+  name: Social
+  position: 4

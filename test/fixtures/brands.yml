@@ -1,0 +1,15 @@
+nike:
+  name: Nike
+  description: Qualidade em calçados esportivos.
+
+adidas:
+  name: Adidas
+  description: Qualidade em calçados esportivos.
+
+puma:
+  name: Puma
+  description: Qualidade em calçados esportivos.
+
+vans:
+  name: Vans
+  description: Qualidade em calçados casuais.

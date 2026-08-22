@@ -1,0 +1,40 @@
+<% content_for :title, @shoe.name %>
+
+<div class="w-full max-w-3xl">
+  <header class="mb-8 flex items-start justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900"><%= @shoe.name %></h1>
+      <p class="mt-1 text-gray-600"><%= @shoe.brand.name %> · <%= @shoe.category.name %> · <%= @shoe.gender %></p>
+    </div>
+    <div class="flex gap-3">
+      <%= link_to "Editar", edit_admin_shoe_path(@shoe), class: "rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500" %>
+      <%= link_to "Voltar", admin_shoes_path, class: "rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50" %>
+    </div>
+  </header>
+
+  <p class="mb-8 text-gray-700"><%= @shoe.description %></p>
+
+  <section>
+    <h2 class="mb-4 text-lg font-semibold text-gray-900">Variantes</h2>
+    <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Tamanho</th>
+            <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Preço</th>
+            <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Estoque</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 bg-white">
+          <% @variants.each do |variant| %>
+            <tr>
+              <td class="px-6 py-4 text-sm text-gray-900"><%= variant.size.label %></td>
+              <td class="px-6 py-4 text-sm text-gray-700"><%= number_to_currency(variant.price) %></td>
+              <td class="px-6 py-4 text-sm text-gray-700"><%= variant.stock_quantity %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

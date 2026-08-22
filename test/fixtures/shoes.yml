@@ -1,0 +1,31 @@
+air_max:
+  name: Air Max
+  description: Tênis com amortecimento visível.
+  gender: male
+  active: true
+  brand: nike
+  category: tenis
+
+superstar:
+  name: Superstar
+  description: Tênis clássico de couro.
+  gender: female
+  active: true
+  brand: adidas
+  category: casual
+
+maxima_pro:
+  name: Maxima Pro
+  description: Tênis esportivo de alto desempenho.
+  gender: unisex
+  active: true
+  brand: puma
+  category: esportivo
+
+old_skool:
+  name: Old Skool
+  description: Tênis clássico de lona e camurça.
+  gender: unisex
+  active: false
+  brand: vans
+  category: tenis

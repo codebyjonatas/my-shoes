@@ -1,0 +1,35 @@
+air_max_41:
+  shoe: air_max
+  size: size_41
+  price: 299.99
+  stock_quantity: 5
+
+air_max_42:
+  shoe: air_max
+  size: size_42
+  price: 299.99
+  stock_quantity: 3
+
+superstar_39:
+  shoe: superstar
+  size: size_39
+  price: 249.99
+  stock_quantity: 10
+
+maxima_40:
+  shoe: maxima_pro
+  size: size_40
+  price: 199.99
+  stock_quantity: 15
+
+maxima_41:
+  shoe: maxima_pro
+  size: size_41
+  price: 199.99
+  stock_quantity: 0
+
+old_skool_38:
+  shoe: old_skool
+  size: size_38
+  price: 199.99
+  stock_quantity: 10

@@ -1,0 +1,58 @@
+<% content_for :title, "Admin · Calçados" %>
+
+<div class="w-full">
+  <header class="mb-8 flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">Administração de Calçados</h1>
+      <p class="mt-1 text-gray-600">Gerencie o catálogo da loja.</p>
+    </div>
+    <%= link_to "Novo calçado", new_admin_shoe_path, class: "rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500" %>
+  </header>
+
+  <%= form_with url: admin_shoes_path, method: :get, class: "mb-6", data: { turbo_frame: "admin-shoes" } do |f| %>
+    <div class="flex flex-wrap gap-4 items-end">
+      <div>
+        <%= f.label :search, "Buscar", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :search, value: params[:search], placeholder: "Nome ou descrição...", class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm" %>
+      </div>
+      <div>
+        <%= f.submit "Filtrar", class: "rounded-md bg-gray-800 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="admin-shoes" class="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Nome</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Marca</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Categoria</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Gênero</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-gray-500">Variantes</th>
+          <th class="px-6 py-3 text-right text-xs font-semibold uppercase text-gray-500">Ações</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200 bg-white">
+        <% @shoes.each do |shoe| %>
+          <tr>
+            <td class="px-6 py-4 text-sm font-medium text-gray-900"><%= shoe.name %></td>
+            <td class="px-6 py-4 text-sm text-gray-500"><%= shoe.brand.name %></td>
+            <td class="px-6 py-4 text-sm text-gray-500"><%= shoe.category.name %></td>
+            <td class="px-6 py-4 text-sm text-gray-500"><%= shoe.gender %></td>
+            <td class="px-6 py-4 text-sm text-gray-500"><%= shoe.shoe_variants.count %></td>
+            <td class="px-6 py-4 text-right text-sm space-x-2">
+              <%= link_to "Ver", admin_shoe_path(shoe), class: "text-indigo-600 hover:text-indigo-800" %>
+              <%= link_to "Editar", edit_admin_shoe_path(shoe), class: "text-indigo-600 hover:text-indigo-800" %>
+              <%= button_to "Excluir", admin_shoe_path(shoe), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "text-red-600 hover:text-red-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <% if @shoes.empty? %>
+    <p class="mt-6 text-center text-gray-500">Nenhum calçado encontrado.</p>
+  <% end %>
+</div>
