@@ -62,8 +62,9 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "example.com" }
 
-  # Allow the Koyeb deployment domain (DNS rebinding protection).
+  # Allow deployment platform domains (DNS rebinding protection).
   config.hosts << /\A[\w-]+\.koyeb\.app\z/
+  config.hosts << /\A[\w-]+\.onrender\.com\z/
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via bin/rails credentials:edit.
   # config.action_mailer.smtp_settings = {
