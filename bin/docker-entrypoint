@@ -1,13 +1,16 @@
 #!/bin/bash -e
 
-# If running the rails server then create or migrate existing database
-if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
-  ./bin/rails db:prepare
+# When booting a web server (rails server or puma), prepare the database
+# (create + migrate) and optionally seed idempotent data. This covers both
+# the default Dockerfile CMD and platform-provided start commands.
+case "${*}" in
+  *"rails server"*|*"puma"*)
+    ./bin/rails db:prepare
 
-  # Optional idempotent seed data on first boot (SEED_ON_BOOT=true).
-  if [ "$SEED_ON_BOOT" == "true" ]; then
-    ./bin/rails db:seed
-  fi
-fi
+    if [ "$SEED_ON_BOOT" == "true" ]; then
+      ./bin/rails db:seed
+    fi
+    ;;
+esac
 
 exec "${@}"
