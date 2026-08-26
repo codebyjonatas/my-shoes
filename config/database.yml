@@ -90,15 +90,3 @@ production:
     database: my_shoes_production
     username: my_shoes
     password: <%= ENV["MY_SHOES_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: my_shoes_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: my_shoes_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: my_shoes_production_cable
-    migrations_paths: db/cable_migrate
